@@ -6,7 +6,7 @@
 #    By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 09:01:59 by hkalia            #+#    #+#              #
-#    Updated: 2017/02/08 18:35:02 by hkalia           ###   ########.fr        #
+#    Updated: 2017/02/09 14:04:14 by hkalia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LDFLAGS		+=	-L . $(subst .a,,$(subst lib,-l,$(NAME)))
 LDFLAGS		+=	-fsanitize=address
 
 SRC_DIR		:=	srcs
-TEST		:=	test.c alloc_wrap.c
+TEST		:=	test.c
 
 FILES		:=	arr_append arr_insert arr_main arr_other arr_qsort_r	\
 				arr_qsort arr_removem arr_reverse
