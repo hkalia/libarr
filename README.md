@@ -203,7 +203,7 @@ int		main(void)
 ```
 The above program will print `Hello World!` to the screen. Let's go through the code.
 ``` C
-t_arr	str; 
+t_arr	str;
 ```
 This first line declares the array, you can replace `str` with whatever name you would like.  
 Then the function `arr_init` is called, it is defined as follows:
@@ -248,14 +248,22 @@ GRD(arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
 So, if `arr_init` returns -1, return -1 as well.  
 Now we want to add `Hello World!` to our initialized array. We can use the `arr_append` function for this. Here is a table giving a quick overview of all the different functions and what they do.
 
-| Function      | Description                     | Type of plug for AV | Scheduled date to speak |
-| :-----------: | ------------------------------- | :-----------------: | :---------------------: |
-| mgould        | 42 cliff notes                  | Thunderbolt         | 01-25-2016              |
-| slee          | tradies                         | thunderbolt         | 01-18-2016              |
-| hkunduru      | TAKE ZERO                       | thunderbolt         | 01-11-2017              |
-| jaleman       | Ubicate                         | VGA                 | 01-04-2017              |
-| jaleman       | Ubicate                         | VGA                 | 11-30-2016              |
-| pmakhija      | Student Intervention System     | USB-C               | 12-21-2016              |
-| epinchon      | MagiXJS (https://magixjs.com)   | HDMI or thunderbolt | 12-28-2016              |
-| hkalia        | Dynamic Array Library in C      | thunderbolt         | 2-7-2017                |
-
+| Function                                                                                                | Description                     |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| int8_t	arr_init(t_arr *src, size_t cap, t_arr_elm elm);                                              |                                 |
+| int8_t	arr_reserve(t_arr *src, size_t sze);                                                          |                                 |
+| int8_t	arr_resize(t_arr *src, size_t sze);                                                           |                                 |
+| void		arr_dtr(t_arr *src);                                                                          |                                 |
+| int8_t	arr_insert(t_arr *dst, size_t idx, const void *src);                                          |                                 |
+| int8_t	arr_insertm(t_arr *dst, size_t idx, const void *src, size_t src_len);                         |                                 |
+| int8_t	arr_insertarr(t_arr *dst, size_t idx, t_arr *src);                                            |                                 |
+| int8_t	arr_append(t_arr *dst, const void *src);                                                      |                                 |
+| int8_t	arr_appendm(t_arr *dst, const void *src, size_t src_len);                                     |                                 |
+| int8_t	arr_appendarr(t_arr *dst, t_arr *src);                                                        |                                 |
+| void		arr_swap(t_arr *src, size_t i, size_t j);                                                     |                                 |
+| void		arr_reverse(t_arr *src);                                                                      |                                 |
+| void		arr_qsort(t_arr *src, int (*cmp)(const void *, const void *, size_t));                        |                                 |
+| void		arr_qsort_r(t_arr *src, void *thunk, int (*cmp)(const void *, const void *, size_t, void *)); |                                 |
+| int8_t	arr_remove(t_arr *src, size_t idx);                                                           |                                 |
+| int8_t	arr_removem(t_arr *src, size_t idx, size_t len);                                              |                                 |
+| char		*arr_tostr(t_arr *src);                                                                       |                                 |

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   examples.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 16:39:29 by hkalia            #+#    #+#             */
-/*   Updated: 2017/02/09 14:03:57 by hkalia           ###   ########.fr       */
+/*   Updated: 2017/02/09 14:36:01 by hkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@ int		main(void)
 	arr_dtr(&str);
 	return (0);
 }
+
+// int		main(void)
+// {
+// 	t_arr	array;
+// 	int		c;
+//
+// 	GRD(arr_init(&array, 2, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
+// 	while (1)
+// 	{
+// 		c = getchar();
+// 		if (c == EOF || c == '\n')
+// 			break ;
+// 		GRD2(arr_append(&array, &c) == -1, perror("append"), arr_dtr(&array), -1);
+// 	}
+// 	printf("%s\n", arr_tostr(&array));
+// 	arr_dtr(&array);
+// 	return (0);
+// }
 
 // int		main(void)
 // {
