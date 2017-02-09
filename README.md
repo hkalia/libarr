@@ -187,3 +187,28 @@ As you can see having a dynamic array can make your code cleaner, easier to read
 ### How to use this Dynamic Array Library
 
 _I am currently in the process of writing this section. for now, please take a look at ```examples.c``` for examples on how to use the library_
+
+I will use the following example to explain the basics of how my dynamic array library works:
+``` C
+int		main(void)
+{
+	t_arr	str;
+
+	arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0});
+	arr_appendm(&str, "Hello World!", 13);
+	printf("%s\n", str.ptr);
+	arr_dtr(&str);
+	return (0);
+}
+```
+The above program will print `Hello World!` to the screen. Let's go through the code.
+``` C
+t_arr	str; 
+```
+This first line declares the array, you can replace `str` with whatever name you would like.  
+Then the function `arr_init` is called, it is defined as follows:
+``` C
+int8_t			arr_init(t_arr *src, size_t cap, t_arr_elm elm);
+```
+The first parameter `t_arr *src` takes the address of the array that you would like to perform this function on. All of the functions in this library have the same first parameter (there are small exceptions).  
+The second parameter
