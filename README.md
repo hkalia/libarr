@@ -163,6 +163,27 @@ int		main(void)
 	return (0);
 }
 ```
+I add some error checking to ensure everything exits properly.
+``` C
+int		main(void)
+{
+	t_arr	array;
+	int		c;
+
+	GRD(arr_init(&array, 2, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
+	while (1)
+	{
+		c = getchar();
+		if (c == EOF || c == '\n')
+			break ;
+		GRD2(arr_append(&array, &c) == -1, perror("append"), arr_dtr(&array), -1);
+	}
+	printf("%s\n", arr_tostr(&array));
+	arr_dtr(&array);
+	return (0);
+}
+```
+As you can see having a dynamic array can make your code cleaner, easier to read and understand, and make coding easier in general.
 ### How to use this Dynamic Array Library
 
 _I am currently in the process of writing this section. for now, please take a look at ```examples.c``` for examples on how to use the library_
