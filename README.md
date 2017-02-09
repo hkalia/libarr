@@ -150,7 +150,7 @@ int		main(void)
 	t_arr	array;
 	int		c;
 
-	arr_init(&array, 2, (t_arr_elm){sizeof(char), 0, 0, 0});
+	arr_init(&array, 50, (t_arr_elm){sizeof(char), 0, 0, 0});
 	while (1)
 	{
 		c = getchar();
@@ -170,7 +170,7 @@ int		main(void)
 	t_arr	array;
 	int		c;
 
-	GRD(arr_init(&array, 2, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
+	GRD(arr_init(&array, 50, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
 	while (1)
 	{
 		c = getchar();
@@ -210,5 +210,52 @@ Then the function `arr_init` is called, it is defined as follows:
 ``` C
 int8_t			arr_init(t_arr *src, size_t cap, t_arr_elm elm);
 ```
+The `arr_init` must be called to initialize the array, if it isn't called, there will be problems. The function sets up the array and does the first allocation. If any of the parameters are equal to 0 the function will return -1. if the allocation fails the function will also return -1. This function makes a call to `malloc(cap * elm.sze)`.  
 The first parameter `t_arr *src` takes the address of the array that you would like to perform this function on. All of the functions in this library have the same first parameter (there are small exceptions).  
-The second parameter
+The second parameter is a `size_t` which represents how big you want your first allocation to be. For example, if you are expecting at least 100 characters, you should pass 100 instead of 1. In this example, for demonstration's sake, I passed 1.  
+The third parameter takes the following struct:
+``` C
+typedef struct	s_elm
+{
+	size_t	sze;
+	int8_t	(*zero)(void *elm);
+	int8_t	(*dup)(void *dst, const void *src);
+	void	(*dtr)(void *elm);
+}				t_arr_elm;
+```
+In this struct `sze` represents the `sizeof()` whatever data type you are dealing with. In this example we are dealing with the `char` datatype, so we pass `sizeof(char)`. The following `zero`, `dup`, and `dtr` are function pointers. We will get into these later, so for now we pass 0.  
+Our final result is the following line:
+``` C
+arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0});
+```
+However this is not correct. Since this function calls `malloc` it can fail and error out, so we need to do some error checking.  
+This library also provides a set of macros to make this easier. They are defined as follows.
+``` C
+# ifndef GRDS
+#  define GRD(a, b) do{if(a){return(b);}}while(0)
+#  define GRD1(a, b, c) do{if(a){b;return(c);}}while(0)
+#  define GRD2(a, b, c, d) do{if(a){b;c;return(d);}}while(0)
+#  define GRD3(a, b, c, d, e) do{if(a){b;c;d;return(e);}}while(0)
+#  define GRD4(a, b, c, d, e, f) do{if(a){b;c;d;e;return(f);}}while(0)
+#  define GRD5(a, b, c, d, e, f, g) do{if(a){b;c;d;e;f;return(g);}}while(0)
+#  define GRD6(a, b, c, d, e, f, g, h) do{if(a){b;c;d;e;f;g;return(h);}}while(0)
+# endif
+```
+These are not required, if you want to, you can remove them. If you decide to use them, here is how you woud use them.
+``` C
+GRD(arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
+```
+So, if `arr_init` returns -1, return -1 as well.  
+Now we want to add `Hello World!` to our initialized array. We can use the `arr_append` function for this. Here is a table giving a quick overview of all the different functions and what they do.
+
+| Function      | Description                     | Type of plug for AV | Scheduled date to speak |
+| :-----------: | ------------------------------- | :-----------------: | :---------------------: |
+| mgould        | 42 cliff notes                  | Thunderbolt         | 01-25-2016              |
+| slee          | tradies                         | thunderbolt         | 01-18-2016              |
+| hkunduru      | TAKE ZERO                       | thunderbolt         | 01-11-2017              |
+| jaleman       | Ubicate                         | VGA                 | 01-04-2017              |
+| jaleman       | Ubicate                         | VGA                 | 11-30-2016              |
+| pmakhija      | Student Intervention System     | USB-C               | 12-21-2016              |
+| epinchon      | MagiXJS (https://magixjs.com)   | HDMI or thunderbolt | 12-28-2016              |
+| hkalia        | Dynamic Array Library in C      | thunderbolt         | 2-7-2017                |
+
