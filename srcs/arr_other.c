@@ -6,7 +6,7 @@
 /*   By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 16:12:52 by hkalia            #+#    #+#             */
-/*   Updated: 2017/01/31 15:10:56 by hkalia           ###   ########.fr       */
+/*   Updated: 2017/02/09 12:16:15 by hkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*arr_tostr(t_arr *src)
 	if (src->len != src->cap)
 		if (((char *)src->ptr)[src->len] == 0)
 			return ((char *)src->ptr);
-	GRD(arr_insert(src, src->len, 0) == -1, 0);
+	GRD(arr_append(src, "") == -1, 0);
 	--src->len;
 	return ((char *)src->ptr);
 }

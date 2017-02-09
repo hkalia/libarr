@@ -6,7 +6,7 @@
 /*   By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 16:39:29 by hkalia            #+#    #+#             */
-/*   Updated: 2017/02/08 18:36:23 by hkalia           ###   ########.fr       */
+/*   Updated: 2017/02/09 12:16:49 by hkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,35 @@
 
 int		main(void)
 {
-	t_arr	nums;
-	int		i;
-	int		*tmp;
+	t_arr	str;
 
-	arr_init(&nums, 1, (t_arr_elm){sizeof(int), 0, 0, 0});
-	i = 0;
-	while (i < 10)
-	{
-		arr_insert(&nums, nums.len, &i);
-		++i;
-	}
-	tmp = (int *)nums.ptr;
-	i = 0;
-	while (i < 10)
-		printf("%d\n", tmp[i++]);
-	arr_dtr(&nums);
+	arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0});
+	arr_appendm(&str, "Hello World!", 13);
+	printf("%s\n", str.ptr);
+	arr_dtr(&str);
 	return (0);
 }
+
+// int		main(void)
+// {
+// 	t_arr	nums;
+// 	int		i;
+// 	int		*tmp;
+//
+// 	arr_init(&nums, 1, (t_arr_elm){sizeof(int), 0, 0, 0});
+// 	i = 0;
+// 	while (i < 10)
+// 	{
+// 		arr_insert(&nums, nums.len, &i);
+// 		++i;
+// 	}
+// 	tmp = (int *)nums.ptr;
+// 	i = 0;
+// 	while (i < 10)
+// 		printf("%d\n", tmp[i++]);
+// 	arr_dtr(&nums);
+// 	return (0);
+// }
 
 // typedef struct	s_ab
 // {
