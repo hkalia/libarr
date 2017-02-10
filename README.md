@@ -248,22 +248,22 @@ GRD(arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
 So, if `arr_init` returns -1, return -1 as well.  
 Now we want to add `Hello World!` to our initialized array. We can use the `arr_append` function for this. Here is a table giving a quick overview of all the different functions and what they do.
 
-| Function                                                                                                | Description                     |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| int8_t	arr_init(t_arr *src, size_t cap, t_arr_elm elm);                                              |                                 |
-| int8_t	arr_reserve(t_arr *src, size_t sze);                                                          |                                 |
-| int8_t	arr_resize(t_arr *src, size_t sze);                                                           |                                 |
-| void		arr_dtr(t_arr *src);                                                                          |                                 |
-| int8_t	arr_insert(t_arr *dst, size_t idx, const void *src);                                          |                                 |
-| int8_t	arr_insertm(t_arr *dst, size_t idx, const void *src, size_t src_len);                         |                                 |
-| int8_t	arr_insertarr(t_arr *dst, size_t idx, t_arr *src);                                            |                                 |
-| int8_t	arr_append(t_arr *dst, const void *src);                                                      |                                 |
-| int8_t	arr_appendm(t_arr *dst, const void *src, size_t src_len);                                     |                                 |
-| int8_t	arr_appendarr(t_arr *dst, t_arr *src);                                                        |                                 |
-| void		arr_swap(t_arr *src, size_t i, size_t j);                                                     |                                 |
-| void		arr_reverse(t_arr *src);                                                                      |                                 |
-| void		arr_qsort(t_arr *src, int (*cmp)(const void *, const void *, size_t));                        |                                 |
-| void		arr_qsort_r(t_arr *src, void *thunk, int (*cmp)(const void *, const void *, size_t, void *)); |                                 |
-| int8_t	arr_remove(t_arr *src, size_t idx);                                                           |                                 |
-| int8_t	arr_removem(t_arr *src, size_t idx, size_t len);                                              |                                 |
-| char		*arr_tostr(t_arr *src);                                                                       |                                 |
+| Function                                                                                                | Description                                                                     |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| int8_t	arr_init(t_arr *src, size_t cap, t_arr_elm elm);                                              | Initializes and allocates the array                                             |
+| int8_t	arr_reserve(t_arr *src, size_t sze);                                                          | Reserve `sze` amount of space in `src` allocating more if necessary             |
+| int8_t	arr_resize(t_arr *src, size_t sze);                                                           | Resize `src` to `sze` elements allocating or removing as necessary              |
+| void		arr_dtr(t_arr *src);                                                                          | Frees and resets the array. `arr_init` must be called again                     |
+| int8_t	arr_insert(t_arr *dst, size_t idx, const void *src);                                          | Inserts `src` at index `idx` in array `dst`                                     |
+| int8_t	arr_insertm(t_arr *dst, size_t idx, const void *src, size_t src_len);                         | Takes `src_len` elements from `src` and inserts into array `dst` at index `idx` |
+| int8_t	arr_insertarr(t_arr *dst, size_t idx, t_arr *src);                                            | Inserts array 'src' into array 'dst' at index 'i'                               |
+| int8_t	arr_append(t_arr *dst, const void *src);                                                      | Appends `src` to array `dst`                                                    |
+| int8_t	arr_appendm(t_arr *dst, const void *src, size_t src_len);                                     | Appends `src_len` elements from `src` into array 'dst'                          |
+| int8_t	arr_appendarr(t_arr *dst, t_arr *src);                                                        | Appends array `src` to array `dst`                                              |
+| void		arr_swap(t_arr *src, size_t i, size_t j);                                                     | Swaps elements at index `i` and index `j`                                       |
+| void		arr_reverse(t_arr *src);                                                                      | Reverses the array, (first element becomes last)                                |
+| void		arr_qsort(t_arr *src, int (*cmp)(const void *, const void *, size_t));                        | Sorts array according to `cmp`                                                  |
+| void		arr_qsort_r(t_arr *src, void *thunk, int (*cmp)(const void *, const void *, size_t, void *)); | Sorts array according to `cmp` passing `thunk` unchanged                        |
+| int8_t	arr_remove(t_arr *src, size_t idx);                                                           | Removes element at index `idx` from array `src`                                 |
+| int8_t	arr_removem(t_arr *src, size_t idx, size_t len);                                              | Removes `len` elements starting at index `idx` from array `src`                 |
+| char		*arr_tostr(t_arr *src);                                                                       | Converts `src` into a valid C string by appending a null character              |
