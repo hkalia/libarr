@@ -188,7 +188,8 @@ int		main(void)
 As you can see having a dynamic array can make your code cleaner, easier to read and understand, and make coding easier in general.
 
 ### How to use this Dynamic Array Library
-*Disclaimer:* This section is still a work in progress
+**Disclaimer:** This section is still a work in progress
+
 I will use the following example to explain the basics of how my dynamic array library works:
 ``` C
 int		main(void)
