@@ -1,4 +1,5 @@
 # libarr
+
 A Dynamic Array Library in C
 
 This library follow the 42 norminette standard and uses only the libc functions `malloc` and `free` from the `stdlib.h` header
@@ -54,6 +55,7 @@ int		main(void)
 }
 ```
 The above program will most likely seg fault if the user inputs more than 50 characters on one line. To counter this we need to add two things. A variable that holds the current capacity of the array and a check to see if `i` is higher than that variable.
+
 ``` C
 int		main(void)
 {
@@ -184,10 +186,9 @@ int		main(void)
 }
 ```
 As you can see having a dynamic array can make your code cleaner, easier to read and understand, and make coding easier in general.
+
 ### How to use this Dynamic Array Library
-
-_I am currently in the process of writing this section. for now, please take a look at ```examples.c``` for examples on how to use the library_
-
+*Disclaimer:* This section is still a work in progress
 I will use the following example to explain the basics of how my dynamic array library works:
 ``` C
 int		main(void)
