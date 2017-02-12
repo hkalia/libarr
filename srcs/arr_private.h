@@ -6,7 +6,7 @@
 /*   By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 14:35:23 by hkalia            #+#    #+#             */
-/*   Updated: 2017/02/09 15:38:31 by hkalia           ###   ########.fr       */
+/*   Updated: 2017/02/11 16:32:56 by hkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #  define GRD6(a, b, c, d, e, f, g, h) do{if(a){b;c;d;e;f;g;return(h);}}while(0)
 # endif
 
-# include <arr.h>
+# include <libarr.h>
 
 void	arr_bzero(void *src, size_t len);
 void	*arr_memcpy(void *dst, const void *src, size_t len);

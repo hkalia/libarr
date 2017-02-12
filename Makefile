@@ -6,27 +6,20 @@
 #    By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 09:01:59 by hkalia            #+#    #+#              #
-#    Updated: 2017/02/09 14:27:58 by hkalia           ###   ########.fr        #
+#    Updated: 2017/02/11 17:23:31 by hkalia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libarr.a
-SHELL		:=	/bin/zsh
-
 CC			:=	gcc
 CFLAGS		+=	-Wall -Wextra -I includes
 CFLAGS		+=	-Werror
-CFLAGS		+=	-fsanitize=address
 LDFLAGS		+=	-L . $(subst .a,,$(subst lib,-l,$(NAME)))
-LDFLAGS		+=	-fsanitize=address
-
-SRC_DIR		:=	srcs
-TEST		:=	test.c alloc_wrap.c
-
+TEST		:=	test.c
 FILES		:=	arr_append arr_insert arr_main arr_other arr_qsort_r	\
 				arr_qsort arr_removem arr_reverse
 
-SRC			:=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
+SRC			:=	$(addprefix srcs/, $(addsuffix .c, $(FILES)))
 OBJ			:=	$(SRC:.c=.o)
 
 # MATH
@@ -44,7 +37,7 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@printf "\r\e[31mCompiling...(%d/%d)\e[0m" $(COUNTER) $(MAX)
-	@$(CC) -c $(CFLAGS) $(INC_DIR) $< -o $@
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJ)
 	@printf "\r\e[32mCompiling...(%d/%d)[DONE]\n\e[0m" $(MAX) $(MAX)
