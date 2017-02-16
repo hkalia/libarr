@@ -6,7 +6,7 @@
 #    By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 09:01:59 by hkalia            #+#    #+#              #
-#    Updated: 2017/02/11 17:23:31 by hkalia           ###   ########.fr        #
+#    Updated: 2017/02/15 20:24:35 by hkalia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ NAME		:=	libarr.a
 CC			:=	gcc
 CFLAGS		+=	-Wall -Wextra -I includes
 CFLAGS		+=	-Werror
+ifdef ALLOCWRAP
+	LDFLAGS += $(HOME)/lib/alloc_wrap.c -ldl
+endif
 LDFLAGS		+=	-L . $(subst .a,,$(subst lib,-l,$(NAME)))
 TEST		:=	test.c
 FILES		:=	arr_append arr_insert arr_main arr_other arr_qsort_r	\
