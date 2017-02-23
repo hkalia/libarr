@@ -14,6 +14,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int		main(void)
+{
+    t_arr	str;
+
+    arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0});
+    arr_appendm(&str, "Hello World!", 13);
+    printf("%s\n", str.ptr);
+    arr_dtr(&str);
+    return (0);
+}
+
 /*
 ** int		main(void)
 ** {
