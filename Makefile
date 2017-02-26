@@ -6,7 +6,7 @@
 #    By: hkalia <hkalia@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 09:01:59 by hkalia            #+#    #+#              #
-#    Updated: 2017/02/21 20:13:37 by hkalia           ###   ########.fr        #
+#    Updated: 2017/02/25 20:51:31 by hkalia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ifdef ALLOCWRAP
 	LDFLAGS += $(HOME)/lib/alloc_wrap.c -ldl
 endif
 LDFLAGS		+=	-L . $(subst .a,,$(subst lib,-l,$(NAME)))
-TEST		:=	test.c
+TEST		:=	libtest.c
 FILES		:=	arr_append arr_insert arr_main arr_other arr_qsort_r	\
 				arr_qsort arr_removem arr_reverse
 
@@ -59,11 +59,3 @@ fclean: clean
 	@printf "\e[32m[DONE]\e[0m\n"
 
 re: fclean all
-
-test: re
-	@printf "\e[31mDeleting object files... \e[0m"
-	@rm -f $(OBJ)
-	@printf "\e[32m[DONE]\e[0m\n"
-	@printf "\e[32mCompiling %s with %s... \e[0m" $(TEST) $(NAME)
-	@$(CC) $(CFLAGS) $(LDFLAGS) $(TEST) -o test
-	@printf "\e[32m[DONE]\e[0m\n"
