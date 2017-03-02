@@ -145,7 +145,7 @@ int		main(void)
 	return (0);
 }
 ```
-As you can see this program has grown quite a bit. here is the same program, but utilizing my dynamic array library.
+As you can see this program has grown quite a bit. Here is the same program, but utilizing my dynamic array library.
 ``` C
 int		main(void)
 {
@@ -258,7 +258,7 @@ Now we want to add `Hello World!` to our initialized array. We can use the `arr_
 | void		arr_dtr(t_arr *src);                                                                          | Frees and resets the array. `arr_init` must be called again                     |
 | int8_t	arr_insert(t_arr *dst, size_t idx, const void *src);                                          | Inserts `src` at index `idx` in array `dst`                                     |
 | int8_t	arr_insertm(t_arr *dst, size_t idx, const void *src, size_t src_len);                         | Takes `src_len` elements from `src` and inserts into array `dst` at index `idx` |
-| int8_t	arr_insertarr(t_arr *dst, size_t idx, t_arr *src);                                            | Inserts array 'src' into array 'dst' at index 'i'                               |
+| int8_t	arr_insertarr(t_arr *dst, size_t idx, t_arr *src);                                            | Inserts array `src` into array `dst` at index `idx`                               |
 | int8_t	arr_append(t_arr *dst, const void *src);                                                      | Appends `src` to array `dst`                                                    |
 | int8_t	arr_appendm(t_arr *dst, const void *src, size_t src_len);                                     | Appends `src_len` elements from `src` into array 'dst'                          |
 | int8_t	arr_appendarr(t_arr *dst, t_arr *src);                                                        | Appends array `src` to array `dst`                                              |
