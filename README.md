@@ -257,7 +257,7 @@ Now we want to add `Hello World!` to our initialized array. We can use the `arr_
 
 | Function                                                                                                | Description                                                                     |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| int8_t	arr_init(t_arr *src, size_t cap, t_arr_elm elm);                                              | Initializes and allocates the array                                             |
+| `int8_t	arr_init(t_arr *src, size_t cap, t_arr_elm elm);`                                              | Initializes and allocates the array                                             |
 | int8_t	arr_reserve(t_arr *src, size_t sze);                                                          | Reserve `sze` amount of space in `src` allocating more if necessary             |
 | int8_t	arr_resize(t_arr *src, size_t sze);                                                           | Resize `src` to `sze` elements allocating or removing as necessary              |
 | void		arr_dtr(t_arr *src);                                                                          | Frees and resets the array. `arr_init` must be called again                     |
