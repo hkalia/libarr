@@ -2,7 +2,7 @@
 
 A Dynamic Array Library in C
 
-This library follow the 42 norminette standard and uses only the libc functions `malloc` and `free` from the `stdlib.h` header
+This library follows the [42 norminette standard](https://github.com/hkalia/42_projects/blob/master/norm.en.pdf) and uses only the libc functions `malloc` and `free` from the `stdlib.h` header.
 
 **Disclaimer:** This library has only been tested on 42 computers
 
@@ -212,9 +212,12 @@ Then the function `arr_init` is called, it is defined as follows:
 ``` C
 int8_t			arr_init(t_arr *src, size_t cap, t_arr_elm elm);
 ```
-The `arr_init` must be called to initialize the array, if it isn't called, there will be problems. The function sets up the array and does the first allocation. If any of the parameters are equal to 0 the function will return -1. if the allocation fails the function will also return -1. This function makes a call to `malloc(cap * elm.sze)`.  
+The `arr_init` must be called to initialize the array. If it isn't called, there will be problems. The function sets up the array and does the first allocation. If any of the parameters are equal to `0` or `NULL`, the function will return `-1`. If the allocation fails the function will also return `-1`. This function makes a call to `malloc(cap * elm.sze)`.  
+
 The first parameter `t_arr *src` takes the address of the array that you would like to perform this function on. All of the functions in this library have the same first parameter (there are small exceptions).  
+
 The second parameter is a `size_t` which represents how big you want your first allocation to be. For example, if you are expecting at least 100 characters, you should pass 100 instead of 1. In this example, for demonstration's sake, I passed 1.  
+
 The third parameter takes the following struct:
 ``` C
 typedef struct	s_elm
@@ -226,11 +229,13 @@ typedef struct	s_elm
 }				t_arr_elm;
 ```
 In this struct `sze` represents the `sizeof()` whatever data type you are dealing with. In this example we are dealing with the `char` datatype, so we pass `sizeof(char)`. The following `zero`, `dup`, and `dtr` are function pointers. We will get into these later, so for now we pass 0.  
+
 Our final result is the following line:
 ``` C
 arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0});
 ```
 However this is not correct. Since this function calls `malloc` it can fail and error out, so we need to do some error checking.  
+
 This library also provides a set of macros to make this easier. They are defined as follows.
 ``` C
 # ifndef GRDS
@@ -247,7 +252,7 @@ These are not required, if you want to, you can remove them. If you decide to us
 ``` C
 GRD(arr_init(&str, 1, (t_arr_elm){sizeof(char), 0, 0, 0}) == -1, -1);
 ```
-So, if `arr_init` returns -1, return -1 as well.  
+So, if `arr_init` returns `-1`, return `-1` as well.  
 Now we want to add `Hello World!` to our initialized array. We can use the `arr_append` function for this. Here is a table giving a quick overview of all the different functions and what they do.
 
 | Function                                                                                                | Description                                                                     |
